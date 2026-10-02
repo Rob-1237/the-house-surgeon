@@ -1,0 +1,8 @@
+.head {
+  display: grid;
+  gap: var(--space-3);
+  max-inline-size: 45rem;
+  margin-block-end: var(--space-8);
+}
+.center { margin-inline: auto; text-align: center; justify-items: center; }
+.intro { font-size: var(--text-lg); }

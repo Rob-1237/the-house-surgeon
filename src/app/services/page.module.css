@@ -1,0 +1,5 @@
+.note { margin-block-start: var(--space-8); }
+.area { display: grid; grid-template-columns: 7fr 5fr; gap: var(--space-8); align-items: start; }
+.towns { display: grid; gap: var(--space-4); }
+.towns h3 { font-size: var(--text-xl); }
+@media (max-width: 48em) { .area { grid-template-columns: 1fr; } }

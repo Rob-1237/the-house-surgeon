@@ -1,0 +1,10 @@
+.band {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+.copy { display: grid; gap: var(--space-3); max-inline-size: 40rem; }
+.copy h2 { font-size: var(--text-3xl); }
+.actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }

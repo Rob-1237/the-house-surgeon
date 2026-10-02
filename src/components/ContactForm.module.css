@@ -1,0 +1,32 @@
+.form { display: grid; gap: var(--space-5); }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+.field { display: grid; gap: var(--space-2); }
+.field label { font-weight: 600; font-size: var(--text-sm); }
+
+.field input:not([type="file"]),
+.field select,
+.field textarea {
+  inline-size: 100%;
+  min-block-size: 2.75rem;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  transition: border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+}
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible {
+  outline: none;
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 3px var(--color-brand-soft);
+}
+.field textarea { resize: vertical; }
+.hint { font-size: var(--text-sm); color: var(--color-text-muted); }
+
+.submit { display: grid; gap: var(--space-3); justify-items: start; }
+.submit button[disabled] { opacity: 0.7; cursor: progress; }
+.error { color: var(--color-error); font-size: var(--text-sm); }
+
+@media (max-width: 36em) { .row { grid-template-columns: 1fr; } }

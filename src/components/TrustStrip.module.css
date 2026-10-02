@@ -1,0 +1,16 @@
+.strip {
+  border-block: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+.list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+  padding-block: var(--space-6);
+}
+.list li { display: grid; gap: var(--space-1); }
+.list strong { font-size: var(--text-base); }
+.list span { font-size: var(--text-sm); color: var(--color-text-muted); }
+
+@media (max-width: 48em) { .list { grid-template-columns: repeat(2, 1fr); } }

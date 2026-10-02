@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Redirects from the old combined site (§2.2 / §5.3) belong on whichever domain the old
+# site lived on. Decide that before launch, then add [[redirects]] blocks here if needed.

@@ -1,0 +1,68 @@
+@import "../styles/tokens.css";
+
+/* ==========================================================================
+   Global layer — only what is truly site-wide. Components use CSS Modules.
+   ========================================================================== */
+
+html { scroll-padding-top: var(--space-12); }
+body { min-height: 100dvh; display: flex; flex-direction: column; }
+main { flex: 1; }
+a { color: inherit; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: absolute; inset-inline-start: var(--space-4); inset-block-start: var(--space-4);
+  z-index: 100; padding: var(--space-2) var(--space-4);
+  background: var(--color-brand); color: var(--color-on-dark); border-radius: var(--radius-sm);
+  transform: translateY(-200%);
+}
+.skip-link:focus-visible { transform: none; }
+
+/* Text and buttons inside dark sections */
+.section--dark .muted { color: color-mix(in srgb, var(--color-on-dark) 80%, transparent); }
+.section--dark .eyebrow { color: var(--color-on-dark); }
+.section--dark .btn--secondary { color: var(--color-on-dark); border-color: color-mix(in srgb, var(--color-on-dark) 40%, transparent); }
+.section--dark .btn--secondary:hover { background: color-mix(in srgb, var(--color-on-dark) 10%, transparent); }
+
+/* Rough-in marker: content waiting on Floyd. Remove before launch (grep "TBD"). */
+.tbd {
+  background: #fff3b0; color: #4a3b00;
+  padding-inline: var(--space-1); border-radius: var(--radius-sm);
+  font-style: normal;
+}
+
+/* ---- Hero entry: CSS-only so it never waits on hydration (protects LCP) ---- */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(var(--reveal-distance)); }
+  to   { opacity: 1; transform: none; }
+}
+.enter { animation: rise-in var(--duration-slow) var(--ease-out) both; }
+.enter-1 { animation-delay: 60ms; }
+.enter-2 { animation-delay: 140ms; }
+.enter-3 { animation-delay: 220ms; }
+
+/* ---- Page transitions: React <ViewTransition> (see components/PageTransition) ----
+   Header/footer sit outside the transition and stay put; only page content moves. */
+::view-transition-old(root),
+::view-transition-new(root) { animation: none; }
+
+::view-transition-old(.page-exit) {
+  animation: var(--duration-fast) var(--ease-out) both page-fade reverse;
+}
+::view-transition-new(.page-enter) {
+  animation:
+    var(--duration-base) var(--ease-out) var(--duration-fast) both page-fade,
+    var(--duration-slow) var(--ease-out) var(--duration-fast) both page-rise;
+}
+@keyframes page-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes page-rise { from { transform: translateY(var(--space-3)); } to { transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+}

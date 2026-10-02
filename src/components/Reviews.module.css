@@ -1,0 +1,21 @@
+.wrap { display: grid; gap: var(--space-8); }
+.grid {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+.card {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+.stars { color: var(--color-brand); letter-spacing: 0.15em; }
+.links { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-5); }
+
+@media (max-width: 60em) { .grid { grid-template-columns: 1fr; } }

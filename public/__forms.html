@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!--
+  Netlify Forms blueprint. Netlify detects forms by parsing static HTML at deploy time;
+  the React form in src/components/ContactForm.tsx posts to this file with matching field names.
+  Keep the two in sync: any field added there must be added here.
+-->
+<html lang="en">
+  <body>
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input name="bot-field" />
+      <input name="name" />
+      <input name="phone" />
+      <input name="email" />
+      <input name="zip" />
+      <select name="service"><option></option></select>
+      <textarea name="message"></textarea>
+      <input type="file" name="photo" />
+    </form>
+  </body>
+</html>

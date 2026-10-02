@@ -1,0 +1,26 @@
+.includes {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4) var(--space-8);
+  max-inline-size: 56rem;
+}
+.includes li {
+  padding-inline-start: var(--space-6);
+  position: relative;
+  font-size: var(--text-lg);
+}
+.includes li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 0.6em;
+  inline-size: var(--space-3);
+  block-size: 2px;
+  background: var(--color-brand);
+}
+.others { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); font-weight: 600; }
+.others a { display: inline-block; padding-block: var(--space-2); }
+
+@media (max-width: 36em) { .includes { grid-template-columns: 1fr; } }
