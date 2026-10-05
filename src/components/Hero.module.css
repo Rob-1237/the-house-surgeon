@@ -86,3 +86,13 @@
   .media { max-inline-size: 19rem; margin-inline: auto; }
   .media > img { inline-size: min(60vw, 14rem); }
 }
+
+/* Phones: smaller circle and headline so the lead and the Call button reach the first screen */
+@media (max-width: 36em) {
+  .backdrop {
+    inline-size: 72vw;
+    margin-block: calc(var(--space-10) * -1) var(--space-4);
+    margin-inline: auto -12vw;
+  }
+  .home h1 { font-size: var(--text-5xl); }
+}

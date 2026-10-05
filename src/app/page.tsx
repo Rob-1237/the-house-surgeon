@@ -20,9 +20,9 @@ export default function Home() {
     <PageTransition>
       <Hero
         size="home"
-        eyebrow="Licensed plumbers · South Indianapolis"
-        title="We find the problem, then we fix it right."
-        lead="Pipe repair, gas lines, and water quality for homes across South Indianapolis and the surrounding area."
+        eyebrow="Licensed plumbers · Indianapolis"
+        title="We find the problem & fix it"
+        lead="Plumbing repair and installation across Indianapolis and the surrounding area."
         actions={
           <>
             <a href={site.phone.href} className="btn btn--primary">
@@ -41,8 +41,8 @@ export default function Home() {
       <Section
         id="services"
         eyebrow="What we do"
-        title="Plumbing, gas, and water quality"
-        intro="The work we know best, done by licensed plumbers who explain what they find."
+        title="Plumbing & much more"
+        intro="The work we know best."
       >
         <ServiceGrid services={services} />
       </Section>
@@ -53,9 +53,7 @@ export default function Home() {
             <p className="eyebrow">Video House Call</p>
             <h2>Show us the problem from your phone</h2>
             <p className="muted">
-              Book a short video call and point your camera at the problem. One of our plumbers will tell you what
-              you&apos;re looking at. If it&apos;s a quick fix, we&apos;ll walk you through it. If not, we show up
-              with the right parts.
+              Book a short video call and point your camera at the problem. If it&apos;s a quick fix, one of our plumbers will walk you through it. If not, we show up.
             </p>
             <Link href="/contact/#video" className="btn btn--primary">
               Book a Video House Call

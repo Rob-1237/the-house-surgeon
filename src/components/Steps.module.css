@@ -59,25 +59,15 @@
 .title { font-size: var(--text-xl); }
 
 /*
- * Sequence (JS sets data-state; without it everything is simply shown): each step fades in, then
- * its pipe fills to the next fitting, which fades in once the pipe arrives. One beat per step.
+ * Pipe draw (JS sets data-pipe; without it the pipe is simply shown): each segment draws left to
+ * right, the second starting the moment the first finishes.
  */
-.steps {
-  --appear: 450ms;                 /* step fade */
-  --fill: 1100ms;                  /* one pipe segment */
-  --beat: calc(var(--appear) + var(--fill) + 150ms);
+.steps { --draw: 1100ms; }
+.steps[data-pipe="armed"] .step::after { transform: scaleX(0); }
+.steps[data-pipe="draw"] .step:not(:last-child)::after {
+  animation: pipe-fill var(--draw) var(--ease-in-out) both;
+  animation-delay: calc(var(--i) * var(--draw));
 }
-.steps[data-state="armed"] .step { opacity: 0; translate: 0 var(--space-3); }
-.steps[data-state="armed"] .step::after { transform: scaleX(0); }
-.steps[data-state="play"] .step {
-  animation: step-in var(--appear) var(--ease-out) both;
-  animation-delay: calc(var(--i) * var(--beat));
-}
-.steps[data-state="play"] .step:not(:last-child)::after {
-  animation: pipe-fill var(--fill) var(--ease-in-out) both;
-  animation-delay: calc(var(--i) * var(--beat) + var(--appear));
-}
-@keyframes step-in { from { opacity: 0; translate: 0 var(--space-3); } }
 @keyframes pipe-fill { from { transform: scaleX(0); } }
 
 @media (max-width: 48em) {
@@ -98,11 +88,11 @@
     block-size: calc(100% + var(--gap));
     transform-origin: center top;
   }
-  .steps[data-state="armed"] .step::after { transform: scaleY(0); }
-  .steps[data-state="play"] .step:not(:last-child)::after { animation-name: pipe-fill-y; }
+  .steps[data-pipe="armed"] .step::after { transform: scaleY(0); }
+  .steps[data-pipe="draw"] .step:not(:last-child)::after { animation-name: pipe-fill-y; }
 }
 @keyframes pipe-fill-y { from { transform: scaleY(0); } }
 
 @media (prefers-reduced-motion: reduce) {
-  .steps[data-state] .step, .steps[data-state] .step::after { opacity: 1; translate: none; transform: none; animation: none; }
+  .steps[data-pipe] .step::after { transform: none; animation: none; }
 }

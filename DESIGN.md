@@ -38,14 +38,16 @@ colors**; derive tints with `color-mix()` from these.
 
 - Derived: `--tint-primary` (12% primary-light on white: icon tiles, placeholders, pipe fill),
   `--on-dark-muted` (82% white).
+- About: "Our team" on canvas, "Credentials" on white (`tone="alt"`).
 - Exceptions: `--color-error` #B42318 (form error text only); `--color-star` #E8B33A (review stars
   only, 9.8:1 on primary). Rough-in `.tbd` markers use a dark gold
   that disappears with them before launch.
 - Section rhythm: canvas (bg-app) ↔ white (`tone="alt"`), with the gradient for the home hero and the
   closing CTA band (`tone="dark"`). Primary-dark footer.
 - **No ghost buttons, ever** (no transparent, outline, or frosted-glass buttons). Secondary buttons
-  are solid `--color-secondary` rgb(48 59 128) with white text (10.2:1) on every surface (interim
-  color, Rob 2026-10-05).
+  are solid `--color-secondary` #E6CE97 (hover #E5C476) with `--color-text-main` text (~10:1) on
+  every surface (Rob 2026-10-05).
+- Button hovers: background, 1px lift and shadow ease over 300ms on `--ease-soft` (quart ease-out).
 
 ## Logo & mascot
 - **Logo:** text wordmark for now ("THE" in teal, "House Surgeon" in brand blue). Primary mark
@@ -56,8 +58,8 @@ colors**; derive tints with `color-mix()` from these.
     The circle has a faint line-art pipework pattern behind Pip (original SVG, not stock).
   - Services: `walking` (toolbox) in the closing CTA band, lifted ~25% of the band height (6rem) off
     its bottom edge on desktop, head breaking well into the section above. Phones: bottom-anchored.
-  - Contact: `drips` (15rem) standing on the top edge of the booking embed, his head rising into the
-    Video House Call section above. 404: `wink`. About: none.
+  - Contact: `drips` (15rem), mirrored in CSS to face left toward the copy, floating 4rem above the
+    booking embed (feet clear of it) with his head rising into the Video House Call section above. 404: `wink`. About: none.
   - Art is the v2 draft; replace the files in `public/images/pip/` after the Figma redraw.
 
 ## Layout
@@ -65,9 +67,11 @@ colors**; derive tints with `color-mix()` from these.
 - **Home hero (`Hero` with `backdrop`):** gradient band, soft wave bottom edge. The Pip circle is
   large (~54vw) and bleeds off the right edge, rising under the header and running down under the
   wave and the trust card, which overlaps it (ref: `../inspiration/home-inspiration-1.webp`). On
-  mobile the circle sits above the copy, still cropped right and tucked under the header.
+  mobile the circle sits above the copy, still cropped right and tucked under the header; on phones
+  (≤ 36em) it shrinks to 72vw and the h1 drops to `--text-5xl`, so the Call button is on the first screen.
 - **Photo heroes (`Hero` with `photo`; Services, About, Contact):** same layout as the home hero (eyebrow, h1, lead, actions
-  on the left; wave bottom; `TrustStrip` overlapping the wave), with a full-bleed photo behind it (Services `indianapolis.webp`, About `about-hero.webp`, Contact `contact-hero.webp`): grayscale, primary gradient overlay (heaviest left and bottom), anchored top-right so
+  on the left; wave bottom; `TrustStrip` overlapping the wave), with a full-bleed photo behind it (each file named for its page: `services-hero.webp` (leaking trap), `about-hero.webp`
+  (Indianapolis skyline), `contact-hero.webp` (hands and wrench)): grayscale, primary gradient overlay (heaviest left and bottom), anchored top-right so
   only the left and bottom crop.
 - **Service area map (`AreaMap`):** Google Maps embed (no key, no pin) centred on downtown
   Indianapolis, ~25 mi each way: Danville and Greenfield in view, Greencastle and Knightstown out.
@@ -97,8 +101,9 @@ colors**; derive tints with `color-mix()` from these.
 Friendly rounded pipe (`--tint-primary` fill, primary-light edge) connecting round primary "fittings".
 - v1 is live in `Steps` (Contact): horizontal between centred columns on desktop, vertical on the
   left on mobile. It is built per segment so it can't misalign. Plays once when the list is ~45vh
-  into view: step 1 fades in, the pipe fills to 2 (1.1s), step 2 fades in, the pipe fills to 3,
-  step 3 fades in. Shown without animation for no-JS and reduced motion.
+  The steps (fittings, titles, text) fade in together with the standard reveal; once the list is
+  ~45vh into view the pipe draws left to right, 1→2 (1.1s) then 2→3 the moment it finishes (on
+  phones, top to bottom). Shown without animation for no-JS and reduced motion.
 - Next: the Services list and the About story/values use the same fittings + pipe.
 - Rules: decorative only (`aria-hidden`/pseudo-elements), never behind text, straight runs plus
   simple elbows only, nothing meandering.

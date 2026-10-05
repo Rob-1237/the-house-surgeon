@@ -69,6 +69,6 @@ export function SiteHeader() {
   );
 }
 
-function isCurrent(pathname: string, href: string) {
+export function isCurrent(pathname: string, href: string) {
   return href === "/" ? pathname === "/" : pathname.startsWith(href);
 }

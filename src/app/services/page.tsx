@@ -16,7 +16,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "Plumbing Services & Service Area",
   description:
-    "Pipe repair, gas lines, water quality, leak detection, water heaters, and fixtures within about 40 miles of South Indianapolis.",
+    "Pipe repair, gas lines, water quality, leak detection, water heaters, and fixtures within about 40 miles of Indianapolis.",
 };
 
 // Page goal: "do you do this, and do you come to me?" → yes → call or book.
@@ -27,7 +27,7 @@ export default function ServicesPage() {
         size="home"
         eyebrow="Services"
         title="Plumbing services"
-        lead="Licensed plumbing for homes across South Indianapolis. Pick a service to see what's included."
+        lead="We have you covered."
         actions={
           <>
             <a href={site.phone.href} className="btn btn--primary">
@@ -38,15 +38,15 @@ export default function ServicesPage() {
             </a>
           </>
         }
-        photo={photos.indianapolis}
+        photo={photos.servicesHero}
       />
 
       <TrustStrip />
       <Section>
         <ServiceCards services={services} />
-        <p className={`muted ${styles.note}`}>
+        {/* <p className={`muted ${styles.note}`}>
           We don&apos;t offer: {notOffered.join(", ").toLowerCase()}.
-        </p>
+        </p> */}
       </Section>
 
       <Section
@@ -54,7 +54,8 @@ export default function ServicesPage() {
         tone="alt"
         eyebrow="Service area"
         title="Do we come to you?"
-        intro={`If you're within about ${site.serviceArea.radiusMiles} miles of ${site.serviceArea.center}, as far north as ${site.serviceArea.northernLimit}, yes.`}
+        intro={`If you're in the greater Indianapolis area, yes.`}
+        // intro={`If you're in ${site.serviceArea.radiusMiles} miles of ${site.serviceArea.center}, as far north as ${site.serviceArea.northernLimit}, yes.`}
       >
         <div className={styles.area}>
           {/* Centred on downtown Indianapolis, no pin (no home address, PLUMBING_PLAN §0.3). */}
@@ -68,7 +69,7 @@ export default function ServicesPage() {
 
       <CtaBand
         title="Not sure which service you need?"
-        lead="Call and describe it. We'll tell you."
+        lead="Call and describe it. We'll help determine."
         media={<Pip pose="walking" sizes="(max-width: 60em) 9rem, 17rem" />}
       />
     </PageTransition>

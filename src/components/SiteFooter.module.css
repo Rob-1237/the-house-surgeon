@@ -4,11 +4,29 @@
   padding-block: var(--space-12) var(--space-6);
 }
 .footer :global(.muted) { color: color-mix(in srgb, var(--color-surface) 75%, transparent); }
-.footer a { text-decoration: none; }
-.footer a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+.footer a {
+  color: var(--color-surface);
+  text-decoration: none;
+  transition: color 300ms var(--ease-soft);
+}
+/* Wordmark, phone, email (every non-nav link): no underline, the color shifts instead */
+.footer a:is(:hover, :focus-visible, :active) { color: var(--color-secondary-hover); }
 
-.footer :global(a[aria-label]) { color: var(--color-surface); } /* wordmark */
-.footer :global(a[aria-label]) span:first-child { color: var(--on-dark-muted); }
+.footer :global(a[aria-label]) span:first-child { color: var(--on-dark-muted); transition: color 300ms var(--ease-soft); } /* "THE" */
+.footer :global(a[aria-label]):is(:hover, :focus-visible, :active) span { color: var(--color-secondary-hover); }
+
+/* Page links: same treatment as the header nav (muted white; underline grows in on hover, stays on
+ * the current page) */
+.footer a.navLink {
+  color: var(--on-dark-muted);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size var(--duration-base) var(--ease-out), color var(--duration-fast) var(--ease-out);
+}
+.footer a.navLink:hover,
+.footer a.navLink[aria-current="page"] { color: var(--color-surface); background-size: 100% 2px; }
 
 .grid {
   display: grid;

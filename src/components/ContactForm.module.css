@@ -1,6 +1,8 @@
 .form { display: grid; gap: var(--space-5); }
 .row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
-.field { display: grid; gap: var(--space-2); }
+/* min-inline-size: 0 lets fields shrink below their content (a long <select> option otherwise widens the form past a phone screen) */
+.field { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-2); min-inline-size: 0; }
+.field input[type="file"] { max-inline-size: 100%; }
 .field label { font-weight: 600; font-size: var(--text-sm); }
 
 .field input:not([type="file"]),

@@ -67,8 +67,8 @@
   --color-accent-hover:  #A92219;
 
   /* Secondary buttons (Rob, 2026-10-05; interim). Always solid — no ghost/outline buttons anywhere. */
-  --color-secondary:       #e6ce97;  /* #303B80, white text 10.2:1 */
-  --color-secondary-hover: #e5c476;         /* white text 12.5:1 */
+  --color-secondary:       #e6ce97;  /* text-main 10.6:1 */
+  --color-secondary-hover: #e5c476;  /* text-main 9.9:1 */
 
   --color-bg-app:        #F6F3EC;  /* warm ivory — page canvas + sections */
   --color-surface:       #FFFFFF;  /* cards, header, inputs; also text on dark */
@@ -105,6 +105,7 @@
   --duration-slow: 500ms;
   --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-soft:   cubic-bezier(0.25, 1, 0.5, 1);   /* gentle ease-out (quart): button hovers */
   --reveal-distance: 1.5rem;   /* 24px max */
 
   /* ---- Focus ----------------------------------------------------------- */
@@ -158,14 +159,14 @@ p  { text-wrap: pretty; max-width: var(--measure); }
   padding: var(--space-4) var(--space-6);
   border-radius: var(--radius-sm); font-weight: 700; text-decoration: none; cursor: pointer;
   border: 1px solid transparent; min-height: 2.75rem; /* 44px tap target */
-  transition: background-color var(--duration-fast) var(--ease-out),
-              transform var(--duration-fast) var(--ease-out),
-              box-shadow var(--duration-fast) var(--ease-out);
+  transition: background-color 300ms var(--ease-soft),
+              transform 300ms var(--ease-soft),
+              box-shadow 300ms var(--ease-soft);
 }
 .btn--primary { background: var(--color-accent); color: var(--color-surface); }
 .btn--primary:hover { background: var(--color-accent-hover); transform: translateY(-1px); box-shadow: var(--shadow-md); }
 /* Solid on every surface. Never transparent/outline (no ghost buttons on this build). */
-.btn--secondary { background: var(--color-secondary); color: var(--color-surface); }
+.btn--secondary { background: var(--color-secondary); color: var(--color-text-main); }
 .btn--secondary:hover { background: var(--color-secondary-hover); transform: translateY(-1px); box-shadow: var(--shadow-md); }
 
 :focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-offset); }

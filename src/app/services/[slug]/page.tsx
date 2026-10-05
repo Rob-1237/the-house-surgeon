@@ -20,7 +20,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/services/[slug]">): Promise<Metadata> {
   const service = getService((await params).slug);
   if (!service) return {};
-  return { title: `${service.name} in South Indianapolis`, description: service.summary };
+  return { title: `${service.name} in Indianapolis`, description: service.summary };
 }
 
 // Page goal: request this service.

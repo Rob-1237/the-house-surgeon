@@ -6,29 +6,44 @@ import styles from "./Steps.module.css";
 export type Step = { title: string; body: string };
 
 /**
- * Numbered process joined by a pipe. Plays once, when the list is ~45vh into view: step 1 appears,
- * the pipe fills to step 2, step 2 appears, then the pipe fills to step 3. The hidden state is set
- * by JS only, so the steps stay visible without it (and for lists that start on screen).
+ * Numbered process joined by a pipe. The steps (fittings, titles, text) fade in together with the
+ * site's standard reveal; once the list is ~35vh into view the pipe draws left to right, segment
+ * 1→2 first, then 2→3 as soon as it finishes. Hidden states are set by JS only, so everything stays
+ * visible without it, and lists that start on screen skip the animation.
  */
 export function Steps({ steps }: { steps: Step[] }) {
   const ref = useRef<HTMLOListElement>(null);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || el.getBoundingClientRect().top < window.innerHeight * 0.55) return;
+    if (!el || el.getBoundingClientRect().top < window.innerHeight) return;
 
-    el.dataset.state = "armed";
-    const io = new IntersectionObserver(
+    el.classList.add("reveal");
+    el.dataset.pipe = "armed";
+    const reveal = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.dataset.state = "play";
-          io.disconnect();
+          el.classList.add("is-visible");
+          reveal.disconnect();
         }
       },
-      { rootMargin: "0px 0px -45% 0px" }, // fires once the top is 45% of the viewport up from the bottom
+      { rootMargin: "0px 0px -10% 0px" }, // same trigger as <Reveal>
     );
-    io.observe(el);
-    return () => io.disconnect();
+    const pipe = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.dataset.pipe = "draw";
+          pipe.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px -35% 0px" }, // once the list's top is 35vh up from the viewport bottom
+    );
+    reveal.observe(el);
+    pipe.observe(el);
+    return () => {
+      reveal.disconnect();
+      pipe.disconnect();
+    };
   }, []);
 
   return (

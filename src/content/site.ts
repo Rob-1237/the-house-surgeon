@@ -7,7 +7,7 @@ export const TBD = "TBD";
 
 export const site = {
   name: "The House Surgeon",
-  tagline: "Licensed plumbing for South Indianapolis and the surrounding area.",
+  tagline: "Licensed plumbing for Indianapolis and the surrounding area.",
   url: "https://housesurgeonindy.com", // ⚠ confirm spelling before launch (vs. thehousesurgeonindy.com)
   devUrl: "https://thehousesurgeon.netlify.app",
 

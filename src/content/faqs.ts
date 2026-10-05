@@ -11,10 +11,6 @@ export const faqs: Faq[] = [
     a: "Yes. Gas line repair, new lines, and appliance hookups are some of our core work.",
   },
   {
-    q: "Do you work on septic systems?",
-    a: "No. We don't take septic work. We're happy to point you to someone who does.",
-  },
-  {
     q: "What is a Video House Call?",
     a: "A short live video call where one of our plumbers looks at the problem with you through your phone's camera. Sometimes it's an easy fix you can do yourself; if not, we arrive knowing what to bring.",
   },

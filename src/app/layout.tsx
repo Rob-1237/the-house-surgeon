@@ -11,11 +11,11 @@ const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakart
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} | Licensed Plumbers in South Indianapolis`,
+    default: `${site.name} | Licensed Plumbers in Indianapolis`,
     template: `%s | ${site.name}`,
   },
   description:
-    "Licensed, bonded, and insured plumbers serving South Indianapolis and the surrounding area: pipe repair, gas lines, water quality, and more.",
+    "Licensed, bonded, and insured plumbers serving Indianapolis and the surrounding area: pipe repair, gas lines, water quality, and more.",
   openGraph: { siteName: site.name, type: "website", locale: "en_US" },
 };
 

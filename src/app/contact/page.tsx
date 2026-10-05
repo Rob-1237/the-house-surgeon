@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Hero } from "@/components/Hero";
 import { IconBadge } from "@/components/Icon";
 import { TrustStrip } from "@/components/TrustStrip";
-import { contactPhotos } from "@/content/photos";
+import { contactPhotos, photos } from "@/content/photos";
 import { PageTransition } from "@/components/PageTransition";
 import { Pip } from "@/components/Pip";
 import { Reveal } from "@/components/Reveal";
@@ -30,7 +30,7 @@ export default function ContactPage() {
         size="home"
         eyebrow="Contact"
         title="Let's get it fixed"
-        lead="Call, book online, show us on video, or send a message. Whatever's easiest for you."
+        lead="Call, book online, show us on video, or send a message."
         actions={
           <>
             <a href={site.phone.href} className="btn btn--primary">
@@ -41,7 +41,7 @@ export default function ContactPage() {
             </a>
           </>
         }
-        photo={contactPhotos.hero}
+        photo={photos.contactHero}
       />
 
       <TrustStrip />
@@ -56,7 +56,7 @@ export default function ContactPage() {
             <p className="eyebrow">Video House Call</p>
             <h2>Show us the problem from your phone</h2>
             <p className="muted">
-              A short live video call with one of our licensed plumbers. Works on any phone, no app to install.
+              Just a short video call. Works on any phone, no app to install.
             </p>
             <p className="muted">
               Fee: <Tbd>decide whether this is shown (prices are off the site)</Tbd>

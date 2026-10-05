@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { primaryNav, site } from "@/content/site";
+import { site } from "@/content/site";
+import { FooterNav } from "./FooterNav";
 import { Tbd } from "./Tbd";
 import { Wordmark } from "./Wordmark";
 import styles from "./SiteFooter.module.css";
@@ -18,13 +18,7 @@ export function SiteFooter() {
 
         <nav aria-label="Footer">
           <h2 className={styles.heading}>Explore</h2>
-          <ul className={styles.list}>
-            {primaryNav.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href}>{item.label}</Link>
-              </li>
-            ))}
-          </ul>
+          <FooterNav />
         </nav>
 
         <div>

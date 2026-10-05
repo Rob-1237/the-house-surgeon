@@ -14,7 +14,7 @@ import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "Meet The House Surgeon, a licensed plumbing team serving South Indianapolis.",
+  description: "Meet The House Surgeon, a licensed plumbing team serving Indianapolis.",
 };
 
 // Page goal: build trust → call.
@@ -24,7 +24,7 @@ export default function AboutPage() {
       <Hero
         size="home"
         eyebrow="About"
-        title="Why we're called The House Surgeon"
+        title="Why we are The House Surgeon"
         lead={<Tbd>Origin of the name, in Floyd&apos;s words. Team voice (&quot;we&quot;).</Tbd>}
         actions={
           <>
@@ -40,12 +40,12 @@ export default function AboutPage() {
       />
 
       <TrustStrip />
-      <Section tone="alt" eyebrow="Our team" title="Licensed plumbers who explain what they find">
+      <Section eyebrow="Our team" title="Licensed plumbers who explain what they find">
         <p className="muted">
           <Tbd>Team bio: years licensed, how we work, what we care about. No &quot;we&apos;re passionate about.&quot;</Tbd>
         </p>
       </Section>
-      <Section title="Credentials">
+      <Section tone="alt" title="Credentials">
         <ul>
           <li>
             Indiana plumbing contractor license # <Tbd>{site.license}</Tbd>

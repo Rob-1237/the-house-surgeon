@@ -6,19 +6,27 @@
 export type Photo = { src: string; alt: string; width: number; height: number; position?: string };
 
 export const photos = {
+  /** Page heroes (`Hero` with `photo`): each file is named for the page it heads. */
+  servicesHero: {
+    src: "/images/photos/services-hero.webp",
+    alt: "Water leaking from a sink trap into a flooded cabinet",
+    width: 645,
+    height: 360,
+    position: "50% 30%",
+  },
   aboutHero: {
     src: "/images/photos/about-hero.webp",
-    alt: "Plumber tightening a chrome sink trap with a pipe wrench",
-    width: 1600,
-    height: 1063,
-    position: "70% 50%", // keep the hands and wrench in view as the left side crops
-  },
-  indianapolis: {
-    src: "/images/photos/indianapolis.webp",
     alt: "Downtown Indianapolis skyline above the near south side",
     width: 1200,
     height: 900,
     position: "100% 0%", // anchor top-right: crop only from the left and bottom
+  },
+  contactHero: {
+    src: "/images/photos/contact-hero.webp",
+    alt: "Plumber tightening a chrome sink trap with a pipe wrench",
+    width: 1600,
+    height: 1063,
+    position: "70% 50%", // keep the hands and wrench in view as the left side crops
   },
   videoCall: {
     src: "/images/photos/video-call.webp",
@@ -112,16 +120,9 @@ export const serviceCardPhotos: Record<string, Photo> = {
   },
 };
 
-/** Contact page photos (supplied by Rob, 2026-10-05). ⚠ Confirm rights; the hero and video photos
- * are low-resolution (645px and 480px wide) and should be replaced with larger files. */
+/** Contact page photos (supplied by Rob, 2026-10-05). ⚠ Confirm rights; the video photo (480px)
+ * and the Services hero (645px, `photos.servicesHero`) are low-resolution; replace with larger files. */
 export const contactPhotos = {
-  hero: {
-    src: "/images/photos/contact-hero.webp",
-    alt: "Water leaking from a sink trap into a flooded cabinet",
-    width: 645,
-    height: 360,
-    position: "50% 30%",
-  },
   videoHouseCall: {
     src: "/images/photos/video-house-call.webp",
     alt: "Woman on a video call, holding up her phone in her living room",

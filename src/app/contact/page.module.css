@@ -10,6 +10,7 @@
 .steps { margin-block: var(--space-10); }
 
 .layout { display: grid; grid-template-columns: 8fr 4fr; gap: var(--space-10); align-items: start; }
+.layout > * { min-inline-size: 0; } /* grid items default to min-content width; keep the form inside the column */
 /* Same dark tile as the home service cards (ServiceGrid) */
 .aside {
   display: grid;
@@ -38,11 +39,12 @@
   gap: var(--space-6);
 }
 .bookCopy { display: grid; gap: var(--space-3); padding-block-end: var(--space-8); }
-.bookPip { margin-block: calc(var(--space-16) * -1.5) calc(var(--space-2) * -1); position: relative; z-index: 1; }
-.bookPip img { inline-size: 100%; block-size: auto; }
+.bookPip { margin-block-start: calc(var(--space-16) * -1.5); position: relative; z-index: 1; translate: 0 calc(var(--space-10) * -1); }
+/* Mirrored to face left, toward the copy */
+.bookPip img { inline-size: 100%; block-size: auto; scale: -1 1; }
 
 @media (max-width: 48em) {
   .bookHead { grid-template-columns: 1fr 9rem; gap: var(--space-4); }
-  .bookPip { margin-block-start: calc(var(--space-12) * -1); }
+  .bookPip { margin-block-start: calc(var(--space-12) * -1); translate: 0 calc(var(--space-5) * -1); }
   .bookCopy { padding-block-end: var(--space-5); }
 }

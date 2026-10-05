@@ -18,7 +18,7 @@ export const services: Service[] = [
   {
     slug: "pipe-repair",
     name: "Pipe Repair",
-    summary: "Leaks, bursts, and worn-out pipe, repaired or replaced.",
+    summary: "Leaks, bursts, and worn-out pipe.",
     intro:
       "From a pinhole leak to a full section of failing galvanized line, we find the cause and fix it properly, not just the spot that's dripping.",
     includes: [
@@ -32,7 +32,7 @@ export const services: Service[] = [
   {
     slug: "gas-lines",
     name: "Gas Lines",
-    summary: "Gas line repair, new lines, and appliance hookups.",
+    summary: "Line repair and appliance hookups.",
     intro:
       "Gas work is not a DIY job. Our licensed plumbers repair gas lines, run new ones, and connect appliances safely and to code.",
     includes: [
@@ -45,7 +45,7 @@ export const services: Service[] = [
   {
     slug: "water-quality",
     name: "Water Quality",
-    summary: "Softeners and filtration for better water at every tap.",
+    summary: "Softeners and filtration for better water.",
     intro:
       "Hard water and off-tasting water wear on your fixtures and your patience. We install and service the equipment that fixes it.",
     includes: [
@@ -70,15 +70,15 @@ export const services: Service[] = [
   {
     slug: "water-heaters",
     name: "Water Heaters",
-    summary: "Water heater installation and replacement.",
+    summary: "Installation and replacement.",
     intro:
       "No hot water, or a heater near the end of its life? We'll help you choose the right replacement and install it.",
     includes: ["Tank water heater installation", "Replacement and haul-away", "Gas and electric units"],
   },
   {
     slug: "fixtures",
-    name: "Faucets, Toilets & Showers",
-    summary: "Fixture installation and repair, done neatly.",
+    name: "Faucets & Toilets",
+    summary: "Fixture installation and repair.",
     intro:
       "Dripping faucets, running toilets, and shower upgrades. The everyday fixes, handled by licensed plumbers.",
     includes: [
