@@ -1,13 +1,14 @@
 .footer {
-  background: var(--color-brand-dark);
-  color: var(--color-on-dark);
+  background: var(--color-primary);
+  color: var(--color-surface);
   padding-block: var(--space-12) var(--space-6);
 }
-.footer :global(.muted) { color: color-mix(in srgb, var(--color-on-dark) 75%, transparent); }
+.footer :global(.muted) { color: color-mix(in srgb, var(--color-surface) 75%, transparent); }
 .footer a { text-decoration: none; }
 .footer a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
 
-.footer :global(a[aria-label]) { color: var(--color-on-dark); } /* wordmark */
+.footer :global(a[aria-label]) { color: var(--color-surface); } /* wordmark */
+.footer :global(a[aria-label]) span:first-child { color: var(--on-dark-muted); }
 
 .grid {
   display: grid;
@@ -35,13 +36,11 @@
   gap: var(--space-2);
   margin-block-start: var(--space-10);
   padding-block-start: var(--space-5);
-  border-block-start: 1px solid color-mix(in srgb, var(--color-on-dark) 15%, transparent);
+  border-block-start: 1px solid color-mix(in srgb, var(--color-surface) 15%, transparent);
   font-size: var(--text-sm);
-  color: color-mix(in srgb, var(--color-on-dark) 75%, transparent);
+  color: color-mix(in srgb, var(--color-surface) 75%, transparent);
 }
 
 @media (max-width: 48em) {
   .grid { grid-template-columns: 1fr; gap: var(--space-6); }
-  /* room for the mobile action bar */
-  .footer { padding-block-end: calc(var(--space-6) + 4.5rem); }
 }

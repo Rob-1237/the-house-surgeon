@@ -3,7 +3,7 @@
   flex-direction: column;
   line-height: 1;
   text-decoration: none;
-  color: var(--color-brand);
+  color: var(--color-primary);
   min-block-size: 2.75rem;
   justify-content: center;
 }
@@ -12,7 +12,7 @@
   font-weight: 600;
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-primary-light);
 }
 .name {
   font-family: var(--font-heading);

@@ -1,18 +1,88 @@
-.hero { padding-block: var(--space-12) var(--space-10); }
-.home { padding-block: var(--space-12); }
+.hero {
+  position: relative;
+  background: var(--gradient-hero);
+  padding-block: var(--space-10) calc(var(--space-10) + clamp(var(--space-7), 6vw, var(--space-12)));
+  overflow-x: clip; /* keeps wide decorations from causing horizontal scroll; vertical stays open so a backdrop can rise under the header */
+}
+.home { padding-block-start: var(--space-12); }
 .home h1 { font-size: var(--text-6xl); letter-spacing: var(--tracking-tighter); }
 
 .grid { display: grid; gap: var(--space-8); align-items: center; }
 .withMedia { grid-template-columns: 7fr 5fr; }
+.home .withMedia { grid-template-columns: 6fr 6fr; }
 
 .copy { display: grid; gap: var(--space-4); justify-items: start; }
 .lead { font-size: var(--text-lg); max-inline-size: 36rem; }
 .actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-block-start: var(--space-3); }
-.note { font-size: var(--text-sm); color: var(--color-text-muted); }
-.media { inline-size: 100%; }
+.media { inline-size: 100%; display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; align-self: end; }
+.media > img { inline-size: min(100%, 20rem); block-size: auto; }
+
+/*
+ * Backdrop (home Pip circle): big circle anchored to the section's right edge, pushed partly off
+ * screen, rising above the hero under the sticky header. Stacking, bottom to top:
+ * gradient + wave (z 0) → circle (z 1) → copy (z 2) → header and trust strip (outside the hero).
+ */
+.withBackdrop {
+  --backdrop-size: clamp(30rem, 54vw, 52rem);
+  --backdrop-rise: calc(var(--space-10) * 1.5); /* how far it climbs under the header */
+  /* tall enough that the circle ends at the hero's bottom edge (under the strip), never below it.
+     No clip-path here: combined with the pattern SVG it stops Pip painting in Chrome. */
+  min-block-size: calc(var(--backdrop-size) - var(--backdrop-rise));
+}
+.backdrop {
+  position: absolute;
+  z-index: 1;
+  inset-block-start: calc((var(--backdrop-rise) + 8vh) * -1);
+  inset-inline-end: -12vw;
+  inline-size: var(--backdrop-size);
+}
+.withBackdrop .grid { position: relative; z-index: 2; }
+.withBackdrop > svg { z-index: 0; } /* the wave */
+.withBackdrop .copy { max-inline-size: min(40rem, 52%); }
+
+/*
+ * Photo hero (Services): full-bleed background photo, grayscale, under a primary gradient that is
+ * heaviest behind the copy (left) and at the bottom, for a slightly dramatic look. The photo is
+ * decorative here (alt=""), the headline carries the meaning. Stack: photo → overlay → wave → copy.
+ */
+.withPhoto { min-block-size: clamp(32rem, 44vw, 40rem); display: flex; flex-direction: column; justify-content: center; }
+.withPhoto > .grid { inline-size: 100%; } /* full container width, so the copy aligns left like the home hero */
+.photo { position: absolute; inset: 0; z-index: 0; }
+.photo { overflow: hidden; }
+/* 110% tall and shifted up 8%: the photo sits ~8% higher in the frame; bottom stays covered */
+.photo img {
+  inline-size: 100%; block-size: 110%; object-fit: cover; translate: 0 -8%;
+  filter: grayscale(1) contrast(1.1);
+}
+.photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg,
+      color-mix(in srgb, var(--color-primary) 94%, transparent) 0%,
+      color-mix(in srgb, var(--color-primary) 78%, transparent) 40%,
+      color-mix(in srgb, var(--color-primary) 30%, transparent) 100%),
+    linear-gradient(0deg, color-mix(in srgb, var(--color-primary) 55%, transparent) 0%, transparent 45%);
+}
+.withPhoto > svg { z-index: 1; } /* the wave cuts the photo */
+.withPhoto .grid { position: relative; z-index: 2; }
+.withPhoto .copy { max-inline-size: 40rem; }
 
 @media (max-width: 60em) {
-  .withMedia { grid-template-columns: 1fr; }
-  .hero { padding-block: var(--space-8) var(--space-7); }
-  .media > * { max-block-size: 20rem; margin-inline: auto; }
+  /* Circle moves into the flow above the copy, still cropped off the right and tucked under the header */
+  .withBackdrop { min-block-size: 0; padding-block-start: 0; }
+  .backdrop {
+    position: relative;
+    inset: auto;
+    inline-size: min(100vw, 34rem);
+    margin-block: calc(var(--space-10) * -1) var(--space-6);
+    margin-inline: auto -16vw;
+  }
+  .withBackdrop .copy { max-inline-size: none; }
+
+  .withMedia,
+  .home .withMedia { grid-template-columns: 1fr; }
+  .media { max-inline-size: 19rem; margin-inline: auto; }
+  .media > img { inline-size: min(60vw, 14rem); }
 }

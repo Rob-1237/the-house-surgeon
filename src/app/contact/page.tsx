@@ -3,7 +3,11 @@ import { CalEmbed } from "@/components/CalEmbed";
 import { ContactForm } from "@/components/ContactForm";
 import { ContactOptions } from "@/components/ContactOptions";
 import { FaqList } from "@/components/FaqList";
+import Image from "next/image";
 import { Hero } from "@/components/Hero";
+import { IconBadge } from "@/components/Icon";
+import { TrustStrip } from "@/components/TrustStrip";
+import { contactPhotos } from "@/content/photos";
 import { PageTransition } from "@/components/PageTransition";
 import { Pip } from "@/components/Pip";
 import { Reveal } from "@/components/Reveal";
@@ -23,21 +27,30 @@ export default function ContactPage() {
   return (
     <PageTransition>
       <Hero
+        size="home"
         eyebrow="Contact"
         title="Let's get it fixed"
         lead="Call, book online, show us on video, or send a message. Whatever's easiest for you."
         actions={
-          <a href={site.phone.href} className="btn btn--primary">
-            Call {site.phone.display}
-          </a>
+          <>
+            <a href={site.phone.href} className="btn btn--primary">
+              Call {site.phone.display}
+            </a>
+            <a href="#book" className="btn btn--secondary">
+              Book a visit
+            </a>
+          </>
         }
+        photo={contactPhotos.hero}
       />
+
+      <TrustStrip />
 
       <Section>
         <ContactOptions />
       </Section>
 
-      <Section id="video" tone="soft">
+      <Section id="video" tone="alt">
         <div className={styles.split}>
           <Reveal className={styles.splitCopy}>
             <p className="eyebrow">Video House Call</p>
@@ -53,7 +66,15 @@ export default function ContactPage() {
             </a>
           </Reveal>
           <Reveal className={styles.splitMedia} delay={120}>
-            <Pip pose="stethoscope" width={260} />
+            <Image
+              src={contactPhotos.videoHouseCall.src}
+              alt={contactPhotos.videoHouseCall.alt}
+              width={contactPhotos.videoHouseCall.width}
+              height={contactPhotos.videoHouseCall.height}
+              sizes="(max-width: 48em) 100vw, 460px"
+              className={styles.photo}
+              style={{ objectPosition: contactPhotos.videoHouseCall.position }}
+            />
           </Reveal>
         </div>
         <div className={styles.steps}>
@@ -73,14 +94,27 @@ export default function ContactPage() {
         />
       </Section>
 
-      <Section id="book" eyebrow="Book online" title="Book a visit or a Video House Call">
-        <CalEmbed calLink={site.cal.profile} label="service visit + Video House Call" />
-      </Section>
+      <section id="book" className="section" aria-labelledby="book-heading">
+        <div className="container">
+          <div className={styles.bookHead}>
+            <Reveal className={styles.bookCopy}>
+              <p className="eyebrow">Book online</p>
+              <h2 id="book-heading">Book a visit or a Video House Call</h2>
+              <p className="muted">Pick the kind of appointment, then a time that works for you.</p>
+            </Reveal>
+            <Reveal className={styles.bookPip} delay={120}>
+              <Pip pose="drips" sizes="(max-width: 48em) 9rem, 15rem" />
+            </Reveal>
+          </div>
+          <CalEmbed calLink={site.cal.profile} label="service visit + Video House Call" />
+        </div>
+      </section>
 
       <Section id="message" tone="alt" eyebrow="Send a message" title="Not ready to book? Tell us what's going on.">
         <div className={styles.layout}>
           <ContactForm />
-          <aside className={styles.aside} aria-label="Other ways to reach us">
+          <aside className={`on-dark ${styles.aside}`} aria-label="Other ways to reach us">
+            <IconBadge name="phone" tone="light" />
             <h3>Prefer to talk?</h3>
             <p>
               <a href={site.phone.href}>{site.phone.display}</a>

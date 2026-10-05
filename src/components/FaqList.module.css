@@ -15,7 +15,7 @@
 .q::after {
   content: "+";
   font-weight: 400;
-  color: var(--color-brand);
+  color: var(--color-primary);
   transition: transform var(--duration-base) var(--ease-out);
 }
 .item[open] .q::after { transform: rotate(45deg); }

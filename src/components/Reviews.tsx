@@ -12,7 +12,7 @@ export function Reviews({ count = 3 }: { count?: number }) {
     <div className={styles.wrap}>
       <ul className={styles.grid}>
         {Array.from({ length: count }, (_, i) => (
-          <Reveal as="li" key={i} delay={i * 80} className={styles.card}>
+          <Reveal as="li" key={i} delay={i * 80} className={`on-dark ${styles.card}`}>
             <p className={styles.stars} aria-hidden="true">★★★★★</p>
             <blockquote>
               <Tbd>Real Google review #{i + 1}: quote, first name, neighborhood</Tbd>

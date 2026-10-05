@@ -6,22 +6,43 @@
 }
 .splitCopy { display: grid; gap: var(--space-4); justify-items: start; }
 .splitMedia { display: grid; place-items: center; }
+.photo { inline-size: 100%; block-size: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-lg); }
 .steps { margin-block: var(--space-10); }
 
 .layout { display: grid; grid-template-columns: 8fr 4fr; gap: var(--space-10); align-items: start; }
+/* Same dark tile as the home service cards (ServiceGrid) */
 .aside {
   display: grid;
+  justify-items: start;
   gap: var(--space-3);
   padding: var(--space-6);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--color-primary);
   border-radius: var(--radius-lg);
 }
-.aside h3 { font-size: var(--text-xl); }
-.aside a { font-weight: 600; }
+.aside h3 { font-size: var(--text-xl); margin-block-start: var(--space-2); color: var(--color-surface); }
+.aside a { font-weight: 600; color: var(--color-surface); }
 
 @media (max-width: 48em) {
   .split, .layout { grid-template-columns: 1fr; gap: var(--space-6); }
-  .splitMedia { order: -1; }
-  .splitMedia img { inline-size: 11rem; }
+}
+
+/*
+ * Booking header: copy left, Pip catching drips right, standing on the embed's top edge. The
+ * negative top margin shrinks his share of the row so his head rises into the Video House Call
+ * section above (like Pip in the Services CTA band).
+ */
+.bookHead {
+  display: grid;
+  grid-template-columns: 1fr 15rem;
+  align-items: end;
+  gap: var(--space-6);
+}
+.bookCopy { display: grid; gap: var(--space-3); padding-block-end: var(--space-8); }
+.bookPip { margin-block: calc(var(--space-16) * -1.5) calc(var(--space-2) * -1); position: relative; z-index: 1; }
+.bookPip img { inline-size: 100%; block-size: auto; }
+
+@media (max-width: 48em) {
+  .bookHead { grid-template-columns: 1fr 9rem; gap: var(--space-4); }
+  .bookPip { margin-block-start: calc(var(--space-12) * -1); }
+  .bookCopy { padding-block-end: var(--space-5); }
 }

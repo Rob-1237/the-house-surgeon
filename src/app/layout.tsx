@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import { JsonLd } from "@/components/JsonLd";
-import { MobileActionBar } from "@/components/MobileActionBar";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { site } from "@/content/site";
 import "./globals.css";
+
+const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakarta", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -17,11 +19,11 @@ export const metadata: Metadata = {
   openGraph: { siteName: site.name, type: "website", locale: "en_US" },
 };
 
-export const viewport: Viewport = { themeColor: "#f9fcfd" };
+export const viewport: Viewport = { themeColor: "#01150f" }; // header background (--color-primary)
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en">
+    <html lang="en" className={jakarta.variable}>
       <body>
         <a href="#main" className="skip-link">
           Skip to content
@@ -29,7 +31,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
-        <MobileActionBar />
         <JsonLd />
       </body>
     </html>

@@ -5,8 +5,8 @@ import styles from "./TrustStrip.module.css";
 /** Short proof row under the hero. Fill from Floyd: license #, bonding, rating, recognitions. */
 export function TrustStrip() {
   return (
-    <section aria-label="Credentials" className={styles.strip}>
-      <ul className={`container ${styles.list}`}>
+    <section aria-label="Credentials" className={`container ${styles.strip}`}>
+      <ul className={styles.list}>
         <li>
           <strong>Licensed in Indiana</strong>
           <span>

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { primaryNav, site } from "@/content/site";
+import { primaryNav } from "@/content/site";
 import { Wordmark } from "./Wordmark";
 import styles from "./SiteHeader.module.css";
 
@@ -52,9 +52,6 @@ export function SiteHeader() {
               </li>
             ))}
           </ul>
-          <a href={site.phone.href} className={`btn btn--primary ${styles.call}`}>
-            Call {site.phone.display}
-          </a>
         </nav>
 
         <button

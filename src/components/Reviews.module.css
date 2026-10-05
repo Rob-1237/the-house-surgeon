@@ -11,11 +11,11 @@
   gap: var(--space-3);
   align-content: start;
   padding: var(--space-6);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--color-primary); /* dark tile, matches the service cards */
+  color: var(--color-surface);
   border-radius: var(--radius-lg);
 }
-.stars { color: var(--color-brand); letter-spacing: 0.15em; }
+.stars { color: var(--color-star); letter-spacing: 0.15em; }
 .links { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-5); }
 
 @media (max-width: 60em) { .grid { grid-template-columns: 1fr; } }

@@ -8,3 +8,19 @@
 .copy { display: grid; gap: var(--space-3); max-inline-size: 40rem; }
 .copy h2 { font-size: var(--text-3xl); }
 .actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+
+/* With mascot: copy | actions | Pip. Pip is bottom-anchored and overflows the band's top. */
+.withMedia { padding-block-end: 0; overflow: visible; }
+.withMedia .band { display: grid; grid-template-columns: 1fr auto 17rem; align-items: end; column-gap: var(--space-8); }
+.withMedia .copy, .withMedia .actions { padding-block-end: var(--section-padding); align-self: center; }
+/* Negative top margin shrinks Pip's share of the row, so his head rises past the band's top edge */
+/* Then lifted ~25% of the band height (~6rem of a ~23–28rem band) so he stands clear of its bottom edge */
+.media { align-self: end; margin-block-start: calc(var(--space-16) * -1.5); translate: 0 -6rem; }
+.media img { inline-size: 100%; block-size: auto; }
+
+@media (max-width: 60em) {
+  .withMedia .band { grid-template-columns: 1fr 9rem; }
+  .withMedia .actions { grid-column: 1; grid-row: 2; padding-block-end: var(--section-padding); }
+  .withMedia .copy { padding-block-end: 0; }
+  .media { grid-column: 2; grid-row: 1 / span 2; margin-block-start: 0; translate: none; }
+}

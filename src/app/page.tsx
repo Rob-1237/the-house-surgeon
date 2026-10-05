@@ -2,15 +2,14 @@ import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { Hero } from "@/components/Hero";
 import { PageTransition } from "@/components/PageTransition";
-import { Pip } from "@/components/Pip";
-import { Placeholder } from "@/components/Placeholder";
+import { PipBadge } from "@/components/PipBadge";
+import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { Reviews } from "@/components/Reviews";
 import { Section } from "@/components/Section";
 import { ServiceGrid } from "@/components/ServiceGrid";
-import { Steps } from "@/components/Steps";
 import { TrustStrip } from "@/components/TrustStrip";
-import { AreaList } from "@/components/AreaList";
+import { photos } from "@/content/photos";
 import { services } from "@/content/services";
 import { site } from "@/content/site";
 import styles from "./page.module.css";
@@ -34,12 +33,7 @@ export default function Home() {
             </Link>
           </>
         }
-        note={
-          <>
-            Water where it shouldn&apos;t be? <a href={site.phone.href}>Call us now</a>
-          </>
-        }
-        media={<Placeholder label="Hero loop: Floyd's footage (hands, tools, water)" ratio="4 / 5" />}
+        backdrop={<PipBadge preload />}
       />
 
       <TrustStrip />
@@ -53,7 +47,7 @@ export default function Home() {
         <ServiceGrid services={services} />
       </Section>
 
-      <Section id="video-call" tone="soft">
+      <Section id="video-call" tone="alt">
         <div className={styles.split}>
           <Reveal className={styles.splitCopy}>
             <p className="eyebrow">Video House Call</p>
@@ -68,35 +62,21 @@ export default function Home() {
             </Link>
           </Reveal>
           <Reveal className={styles.splitMedia} delay={120}>
-            <Pip pose="stethoscope" width={280} />
+            <Image
+              src={photos.videoCall.src}
+              alt={photos.videoCall.alt}
+              width={photos.videoCall.width}
+              height={photos.videoCall.height}
+              sizes="(max-width: 48em) 100vw, 460px"
+              className={styles.photo}
+              style={{ objectPosition: photos.videoCall.position }}
+            />
           </Reveal>
         </div>
       </Section>
 
-      <Section id="how" eyebrow="How it works" title="Straightforward from the first call">
-        <Steps
-          steps={[
-            { title: "Call or book", body: "Tell us what's going on. A photo of the problem helps." },
-            { title: "We diagnose", body: "On a video call or in person, we find the cause and explain it plainly." },
-            { title: "We fix it", body: "Clean, code-compliant work by licensed plumbers." },
-          ]}
-        />
-      </Section>
-
-      <Section id="reviews" tone="alt" eyebrow="Reviews" title="What our neighbors say">
+      <Section id="reviews" eyebrow="Reviews" title="What our neighbors say">
         <Reviews />
-      </Section>
-
-      <Section
-        id="area"
-        eyebrow="Service area"
-        title="South Indianapolis and about 40 miles around"
-        intro={`From ${site.serviceArea.center} north to ${site.serviceArea.northernLimit}, east and west across the metro.`}
-      >
-        <Reveal className={styles.area}>
-          <AreaList />
-          <Link href="/services/#area">See the service area map</Link>
-        </Reveal>
       </Section>
 
       <CtaBand />

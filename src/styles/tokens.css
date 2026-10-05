@@ -1,14 +1,14 @@
 /* ==========================================================================
    tokens.css — design tokens (from the brand-kit template).
-   ⚠ Colors: thd-palette (starting point). Fonts: PROVISIONAL system stack until the
-   brand-kit pass produces DESIGN.md.
+   Intent and contrast table: DESIGN.md. Colors: thd-palette. Font: Plus Jakarta Sans.
    Rule: components use ONLY these variables for spacing, type, color, motion.
    ========================================================================== */
 
 :root {
   /* ---- Typography ------------------------------------------------------ */
-  --font-heading: var(--font-fallback-sans);
-  --font-body:    var(--font-fallback-sans);
+  /* Plus Jakarta Sans (Google Fonts, SIL OFL 1.1), self-hosted by next/font as --font-jakarta */
+  --font-heading: var(--font-jakarta), var(--font-fallback-sans);
+  --font-body:    var(--font-jakarta), var(--font-fallback-sans);
   --font-fallback-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-fallback-serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -57,39 +57,42 @@
   --container-max: 75rem;                       /* 1200 */
   --container-gutter: clamp(1rem, 4vw, 2rem);   /* 16→32 */
 
-  /* ---- Color (60 / 30 / 10) ------------------------------------------- */
-  /* Palette: thd-concepts/thd-palette.jpeg (hexes sampled from pixels — the labels in the
-     image are garbled; confirm against the source file). ⚠ Starting point, may be adjusted. */
-  /* 60% neutrals */
-  --color-bg:           #f9fcfd;   /* tint of palette ice */
-  --color-surface:      #ffffff;
-  --color-surface-alt:  #eaf7fb;   /* palette: ice */
-  --color-text:         #0f2a36;   /* ink — derived from palette deep blue (palette has no dark neutral) */
-  --color-text-muted:   #4a6470;   /* 6.1:1 on bg, 4.75:1 on brand-soft */
-  --color-border:       #c9e4f5;   /* decorative rules and card edges */
-  --color-border-strong:#5f8595;   /* 3.9:1 — form fields, UI boundaries */
+  /* ---- Color ---------------------------------------------------------- */
+  /* Core palette (Rob, 2026-10-05, forest). Contrast table in DESIGN.md. Do not add colors here;
+     derive tints with color-mix() from these (see "Derived" below). */
+  --color-primary:       #01150f;  /* deep forest green — brand, headings, footer (white 12.5:1) */
+  --color-primary-light: #032a1d;  /* secondary forest — gradient end, pipe line-art (white 8.5:1) */
 
-  /* 30% brand */
-  --color-brand:        #176081;   /* palette: deep blue */
-  --color-secondary:    #297b73;   /* palette: teal — icon badges, featured cards */
-  --color-brand-soft:   #c9e4f5;   /* palette: light blue — alt sections, tiles */
-  --color-brand-dark:   #0f3f55;   /* dark sections + footer; text flips to --color-on-dark */
-  --color-on-dark:      #eaf7fb;
+  --color-accent:        #C92B20;  /* warm plumbing red — primary CTAs ONLY (white text 5.5:1) */
+  --color-accent-hover:  #A92219;
 
-  /* 10% accent — CTAs ONLY */
-  --color-accent:       #d41a0f;   /* palette red #f41b10 darkened: white text needs ≥ 4.5:1 (5.3:1 here; #f41b10 is 4.2:1) */
-  --color-accent-hover: #b5150b;
-  --color-on-accent:    #ffffff;
-  --color-red-bright:   #f41b10;   /* palette red as given — illustration/mascot only, never text */
+  /* Secondary buttons (Rob, 2026-10-05; interim). Always solid — no ghost/outline buttons anywhere. */
+  --color-secondary:       #e6ce97;  /* #303B80, white text 10.2:1 */
+  --color-secondary-hover: #e5c476;         /* white text 12.5:1 */
 
-  /* semantic (pair with icon/label, never color alone) */
-  --color-success: #1e7f4f;
-  --color-error:   #b42318;
+  --color-bg-app:        #F6F3EC;  /* warm ivory — page canvas + sections */
+  --color-surface:       #FFFFFF;  /* cards, header, inputs; also text on dark */
+
+  --color-text-main:     #17231F;  /* 14.6:1 on bg-app */
+  --color-text-muted:    #5B6862;  /* 5.3:1 on bg-app, 5.8:1 on white; also form-field borders (≥ 3:1) */
+  --color-border:        #D8D8D0;  /* decorative card borders only (1.3:1, never a field boundary) */
+
+  --gradient-hero: linear-gradient(135deg, #01150f 0%, #032a1d 100%);  /* white text ≥ 8.5:1 */
+
+  /* Functional exception: review star rating only (9.8:1 on --color-primary) */
+  --color-star: #E8B33A;
+
+  /* Functional exception: form error text only */
+  --color-error:         #B42318;
+
+  /* Derived (not new colors) */
+  --tint-primary: color-mix(in srgb, var(--color-primary-light) 12%, var(--color-surface));  /* icon tiles, placeholders, pipe fill */
+  --on-dark-muted: color-mix(in srgb, var(--color-surface) 82%, transparent);                 /* secondary text on the gradient, ≥ 6.3:1 */
 
   /* ---- Shape & elevation ---------------------------------------------- */
-  --radius-sm:   0.375rem;  /* 6  inputs, tags */
-  --radius-md:   0.75rem;   /* 12 cards, buttons */
-  --radius-lg:   1.25rem;   /* 20 panels, images */
+  --radius-sm:   0.25rem;   /* 4  buttons, inputs, tags */
+  --radius-md:   0.375rem;  /* 6  small panels */
+  --radius-lg:   0.5rem;    /* 8  cards, strips, images */
   --radius-full: 999px;
 
   --shadow-sm: 0 1px 2px rgb(0 0 0 / .06);
@@ -105,7 +108,7 @@
   --reveal-distance: 1.5rem;   /* 24px max */
 
   /* ---- Focus ----------------------------------------------------------- */
-  --focus-ring: 2px solid var(--color-brand);
+  --focus-ring: 2px solid var(--color-primary);
   --focus-offset: 2px;
 }
 
@@ -121,8 +124,8 @@ body {
   font-family: var(--font-body);
   font-size: var(--text-base);
   line-height: var(--leading-body);
-  color: var(--color-text);
-  background: var(--color-bg);
+  color: var(--color-text-main);
+  background: var(--color-bg-app);
   -webkit-font-smoothing: antialiased;
 }
 img, picture, video, svg { display: block; max-width: 100%; height: auto; }
@@ -135,33 +138,35 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
   overflow-wrap: break-word;
 }
+h1, h2 { font-weight: 800; }
+h3, h4 { font-weight: 700; }
 h1 { font-size: var(--text-5xl); line-height: var(--leading-tight); letter-spacing: var(--tracking-tight); }
 h2 { font-size: var(--text-4xl); line-height: var(--leading-snug); }
 h3 { font-size: var(--text-3xl); }
 h4 { font-size: var(--text-2xl); }
 p  { text-wrap: pretty; max-width: var(--measure); }
 .muted { color: var(--color-text-muted); }
-.eyebrow { font-size: var(--text-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-brand); }
+.eyebrow { font-size: var(--text-sm); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-primary); }
 
 .container { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--container-gutter); }
 .section   { padding-block: var(--section-padding); }
-.section--alt  { background: var(--color-surface-alt); }
-.section--soft { background: var(--color-brand-soft); }
-.section--dark { background: var(--color-brand-dark); color: var(--color-on-dark); }
+.section--alt  { background: var(--color-surface); }
+.section--dark { background: var(--gradient-hero); color: var(--color-surface); }
 
 .btn {
   display: inline-flex; align-items: center; gap: var(--space-2);
   padding: var(--space-4) var(--space-6);
-  border-radius: var(--radius-md); font-weight: 600; text-decoration: none; cursor: pointer;
+  border-radius: var(--radius-sm); font-weight: 700; text-decoration: none; cursor: pointer;
   border: 1px solid transparent; min-height: 2.75rem; /* 44px tap target */
   transition: background-color var(--duration-fast) var(--ease-out),
               transform var(--duration-fast) var(--ease-out),
               box-shadow var(--duration-fast) var(--ease-out);
 }
-.btn--primary { background: var(--color-accent); color: var(--color-on-accent); }
+.btn--primary { background: var(--color-accent); color: var(--color-surface); }
 .btn--primary:hover { background: var(--color-accent-hover); transform: translateY(-1px); box-shadow: var(--shadow-md); }
-.btn--secondary { background: transparent; color: var(--color-brand); border-color: var(--color-border); }
-.btn--secondary:hover { background: var(--color-brand-soft); }
+/* Solid on every surface. Never transparent/outline (no ghost buttons on this build). */
+.btn--secondary { background: var(--color-secondary); color: var(--color-surface); }
+.btn--secondary:hover { background: var(--color-secondary-hover); transform: translateY(-1px); box-shadow: var(--shadow-md); }
 
 :focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-offset); }
 

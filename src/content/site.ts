@@ -9,7 +9,7 @@ export const site = {
   name: "The House Surgeon",
   tagline: "Licensed plumbing for South Indianapolis and the surrounding area.",
   url: "https://housesurgeonindy.com", // ⚠ confirm spelling before launch (vs. thehousesurgeonindy.com)
-  devUrl: "https://house-surgeon.netlify.app",
+  devUrl: "https://thehousesurgeon.netlify.app",
 
   phone: {
     display: "(463) 312-4018",

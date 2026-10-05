@@ -2,7 +2,8 @@ import type { ReactNode } from "react";
 import { Reveal } from "./Reveal";
 import styles from "./Section.module.css";
 
-type Tone = "default" | "alt" | "soft" | "dark";
+/** default = bg-app canvas, alt = white surface, dark = hero gradient */
+type Tone = "default" | "alt" | "dark";
 
 /** A page section: optional eyebrow + h2 + intro, then content. One h2 per section. */
 export function Section({

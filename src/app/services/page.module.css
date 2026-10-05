@@ -1,5 +1,12 @@
 .note { margin-block-start: var(--space-8); }
 .area { display: grid; grid-template-columns: 7fr 5fr; gap: var(--space-8); align-items: start; }
+.map {
+  inline-size: 100%;
+  aspect-ratio: 4 / 3;
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: var(--tint-primary); /* while the map loads */
+}
 .towns { display: grid; gap: var(--space-4); }
 .towns h3 { font-size: var(--text-xl); }
 @media (max-width: 48em) { .area { grid-template-columns: 1fr; } }

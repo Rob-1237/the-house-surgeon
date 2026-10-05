@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { AreaList } from "@/components/AreaList";
+import { AreaMap } from "@/components/AreaMap";
 import { CtaBand } from "@/components/CtaBand";
 import { Hero } from "@/components/Hero";
+import { TrustStrip } from "@/components/TrustStrip";
 import { PageTransition } from "@/components/PageTransition";
-import { Placeholder } from "@/components/Placeholder";
+import { Pip } from "@/components/Pip";
+import { photos } from "@/content/photos";
 import { Section } from "@/components/Section";
-import { ServiceGrid } from "@/components/ServiceGrid";
+import { ServiceCards } from "@/components/ServiceCards";
 import { notOffered, services } from "@/content/services";
 import { site } from "@/content/site";
 import styles from "./page.module.css";
@@ -21,12 +24,26 @@ export default function ServicesPage() {
   return (
     <PageTransition>
       <Hero
+        size="home"
         eyebrow="Services"
         title="Plumbing services"
         lead="Licensed plumbing for homes across South Indianapolis. Pick a service to see what's included."
+        actions={
+          <>
+            <a href={site.phone.href} className="btn btn--primary">
+              Call {site.phone.display}
+            </a>
+            <a href="#area" className="btn btn--secondary">
+              Service area
+            </a>
+          </>
+        }
+        photo={photos.indianapolis}
       />
+
+      <TrustStrip />
       <Section>
-        <ServiceGrid services={services} />
+        <ServiceCards services={services} />
         <p className={`muted ${styles.note}`}>
           We don&apos;t offer: {notOffered.join(", ").toLowerCase()}.
         </p>
@@ -40,8 +57,8 @@ export default function ServicesPage() {
         intro={`If you're within about ${site.serviceArea.radiusMiles} miles of ${site.serviceArea.center}, as far north as ${site.serviceArea.northernLimit}, yes.`}
       >
         <div className={styles.area}>
-          {/* Real map: static image with the 40-mile radius (no home-address pin). See PLUMBING_PLAN §0.3. */}
-          <Placeholder label="Map: 40-mile service radius" ratio="4 / 3" />
+          {/* Centred on downtown Indianapolis, no pin (no home address, PLUMBING_PLAN §0.3). */}
+          <AreaMap className={styles.map} title={`Map of our service area around ${site.serviceArea.center}`} />
           <div className={styles.towns}>
             <h3>Towns we serve</h3>
             <AreaList />
@@ -49,7 +66,11 @@ export default function ServicesPage() {
         </div>
       </Section>
 
-      <CtaBand title="Not sure which service you need?" lead="Call and describe it. We'll tell you." />
+      <CtaBand
+        title="Not sure which service you need?"
+        lead="Call and describe it. We'll tell you."
+        media={<Pip pose="walking" sizes="(max-width: 60em) 9rem, 17rem" />}
+      />
     </PageTransition>
   );
 }

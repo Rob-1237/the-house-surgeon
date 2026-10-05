@@ -18,7 +18,7 @@ export default function NotFound() {
           </Link>
         </>
       }
-      media={<Pip pose="wink" width={260} />}
+      media={<Pip pose="wink" />}
     />
   );
 }

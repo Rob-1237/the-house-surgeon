@@ -1,0 +1,47 @@
+/*
+ * The circle fills its container width (D). Pip (full standing figure) is 56% of D wide, so ≈ 0.95D
+ * tall: placed in the left, on-screen part of the circle (the right side bleeds off the viewport),
+ * starting ~20% + 2vh down, so his legs run well past the circle's bottom and are clipped by it.
+ * No cut-off edge can show inside the circle.
+ */
+.badge {
+  position: relative;
+  inline-size: 100%;
+  aspect-ratio: 1;
+}
+
+.circle {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 50%;
+  /* spotlight: white centre fading to the primary tint */
+  background: radial-gradient(circle at 40% 42%, var(--color-surface) 0%, var(--color-bg-app) 45%, var(--tint-primary) 100%);
+  /* Opaque rings (not translucent white), so they stay visible over the green gradient and the
+     ivory canvas below the wave alike. */
+  box-shadow:
+    0 0 0 0.75rem color-mix(in srgb, var(--color-surface) 22%, var(--color-primary-light)),
+    0 0 0 1.75rem color-mix(in srgb, var(--color-surface) 8%, var(--color-primary-light)),
+    var(--shadow-lg);
+}
+
+.pipes {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  color: var(--color-primary-light);
+  opacity: 0.12; /* group opacity: overlapping runs and fittings stay one even tone */
+}
+
+.img {
+  position: absolute;
+  inset-inline-start: 15%;
+  inset-block-start: calc(20% + 2vh);
+  inline-size: 56%;
+  block-size: auto; /* source art faces left, toward the headline — no mirroring */
+}
+
+@media (max-width: 60em) {
+  .img { inset-block-start: 26%; }
+}

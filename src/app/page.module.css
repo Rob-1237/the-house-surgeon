@@ -6,10 +6,8 @@
 }
 .splitCopy { display: grid; gap: var(--space-4); justify-items: start; }
 .splitMedia { display: grid; place-items: center; }
-.area { display: grid; gap: var(--space-5); justify-items: start; }
+.photo { inline-size: 100%; block-size: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius-lg); }
 
 @media (max-width: 48em) {
   .split { grid-template-columns: 1fr; gap: var(--space-6); }
-  .splitMedia { order: -1; }
-  .splitMedia img { inline-size: 12rem; }
 }

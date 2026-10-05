@@ -1,13 +1,108 @@
+/*
+ * Pipe motif v1: each step has a round "fitting" (the number) and a pipe segment that runs from
+ * its fitting to the next one. Segments are per-step, so the pipe can never misalign:
+ * horizontal between centred columns on desktop, vertical down the left edge on mobile.
+ * Decorative only (pseudo-elements); never behind text.
+ */
 .steps {
+  --node: var(--space-10);          /* fitting diameter */
+  --pipe: 0.875rem;                 /* pipe thickness */
+  --gap: var(--space-8);
   list-style: none;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-8);
-  counter-reset: step;
+  gap: var(--gap);
 }
-.step { display: grid; gap: var(--space-3); align-content: start; padding-block-start: var(--space-5); border-block-start: 2px solid var(--color-brand); }
-.num { font-family: var(--font-heading); font-size: var(--text-2xl); font-weight: 800; color: var(--color-brand); }
+
+.step {
+  position: relative;
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+  justify-items: center;
+  text-align: center;
+}
+.step p { margin-inline: auto; }
+
+/* Pipe segment → next fitting */
+.step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset-block-start: calc((var(--node) - var(--pipe)) / 2);
+  inset-inline-start: 50%;
+  inline-size: calc(100% + var(--gap));
+  block-size: var(--pipe);
+  border-radius: var(--radius-full);
+  background: var(--tint-primary);
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--color-primary-light) 45%, transparent);
+  transform-origin: left center;
+}
+
+.num {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  inline-size: var(--node);
+  block-size: var(--node);
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  color: var(--color-surface);
+  font-size: var(--text-lg);
+  font-weight: 800;
+  /* collar: reads as a pipe fitting */
+  box-shadow: 0 0 0 0.375rem color-mix(in srgb, var(--color-primary-light) 22%, var(--color-surface));
+  margin-block-end: var(--space-2);
+}
 .title { font-size: var(--text-xl); }
 
-@media (max-width: 48em) { .steps { grid-template-columns: 1fr; gap: var(--space-6); } }
+/*
+ * Sequence (JS sets data-state; without it everything is simply shown): each step fades in, then
+ * its pipe fills to the next fitting, which fades in once the pipe arrives. One beat per step.
+ */
+.steps {
+  --appear: 450ms;                 /* step fade */
+  --fill: 1100ms;                  /* one pipe segment */
+  --beat: calc(var(--appear) + var(--fill) + 150ms);
+}
+.steps[data-state="armed"] .step { opacity: 0; translate: 0 var(--space-3); }
+.steps[data-state="armed"] .step::after { transform: scaleX(0); }
+.steps[data-state="play"] .step {
+  animation: step-in var(--appear) var(--ease-out) both;
+  animation-delay: calc(var(--i) * var(--beat));
+}
+.steps[data-state="play"] .step:not(:last-child)::after {
+  animation: pipe-fill var(--fill) var(--ease-in-out) both;
+  animation-delay: calc(var(--i) * var(--beat) + var(--appear));
+}
+@keyframes step-in { from { opacity: 0; translate: 0 var(--space-3); } }
+@keyframes pipe-fill { from { transform: scaleX(0); } }
+
+@media (max-width: 48em) {
+  .steps { grid-template-columns: 1fr; --gap: var(--space-7); }
+  .step {
+    justify-items: start;
+    text-align: start;
+    padding-inline-start: calc(var(--node) + var(--space-5));
+    min-block-size: var(--node);
+  }
+  .step p { margin-inline: 0; }
+  .num { position: absolute; inset-inline-start: 0; inset-block-start: 0; margin: 0; }
+  .title { padding-block-start: var(--space-2); }
+  .step:not(:last-child)::after {
+    inset-block-start: calc(var(--node) / 2);
+    inset-inline-start: calc((var(--node) - var(--pipe)) / 2);
+    inline-size: var(--pipe);
+    block-size: calc(100% + var(--gap));
+    transform-origin: center top;
+  }
+  .steps[data-state="armed"] .step::after { transform: scaleY(0); }
+  .steps[data-state="play"] .step:not(:last-child)::after { animation-name: pipe-fill-y; }
+}
+@keyframes pipe-fill-y { from { transform: scaleY(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .steps[data-state] .step, .steps[data-state] .step::after { opacity: 1; translate: none; transform: none; animation: none; }
+}

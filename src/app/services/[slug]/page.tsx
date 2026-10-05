@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CtaBand } from "@/components/CtaBand";
-import { Hero } from "@/components/Hero";
+import { PageHero } from "@/components/PageHero";
+import { servicePhotos } from "@/content/photos";
 import { PageTransition } from "@/components/PageTransition";
-import { Placeholder } from "@/components/Placeholder";
 import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
 import { getService, services } from "@/content/services";
@@ -32,8 +32,8 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
 
   return (
     <PageTransition>
-      <Hero
-        eyebrow="Services"
+      <PageHero
+        crumb={{ href: "/services/", label: "Services" }}
         title={service.name}
         lead={service.intro}
         actions={
@@ -46,7 +46,8 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
             </Link>
           </>
         }
-        media={<Placeholder label={`Photo: ${service.name} job`} ratio="4 / 3" />}
+        photo={servicePhotos[service.slug]}
+        photoLabel={`Photo: ${service.name} job`}
       />
 
       <Section tone="alt" title="What's included" id="included">
