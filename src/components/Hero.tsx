@@ -39,7 +39,10 @@ export function Hero({
       className={`on-dark ${styles.hero} ${styles[size]} ${backdrop ? styles.withBackdrop : ""} ${photo ? styles.withPhoto : ""}`}
     >
       {photo && (
-        <div className={styles.photo}>
+        <div
+          className={`${styles.photo} ${photo.mobileScale ? styles.photoScaled : ""}`}
+          style={photo.mobileScale ? ({ "--photo-scale": photo.mobileScale } as React.CSSProperties) : undefined}
+        >
           <Image
             src={photo.src}
             alt=""

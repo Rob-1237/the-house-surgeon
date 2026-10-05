@@ -95,4 +95,9 @@
     margin-inline: auto -12vw;
   }
   .home h1 { font-size: var(--text-5xl); }
+  /* Photo shrunk (Photo.mobileScale), anchored top and faded into the gradient below */
+  .photoScaled img {
+    block-size: calc(110% * var(--photo-scale));
+    mask-image: linear-gradient(to bottom, #000 70%, transparent);
+  }
 }

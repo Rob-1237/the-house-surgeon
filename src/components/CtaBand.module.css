@@ -22,5 +22,5 @@
   .withMedia .band { grid-template-columns: 1fr 9rem; }
   .withMedia .actions { grid-column: 1; grid-row: 2; padding-block-end: var(--section-padding); }
   .withMedia .copy { padding-block-end: 0; }
-  .media { grid-column: 2; grid-row: 1 / span 2; margin-block-start: 0; translate: none; }
+  .media { grid-column: 2; grid-row: 1 / span 2; margin-block-start: 0; translate: 0 -10vh; }
 }

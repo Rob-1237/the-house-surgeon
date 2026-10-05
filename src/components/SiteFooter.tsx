@@ -48,7 +48,12 @@ export function SiteFooter() {
 
       <div className={`container ${styles.base}`}>
         <p>© {new Date().getFullYear()} {site.name}</p>
-        <p>Site by Garfish Digital</p>
+        <p>
+          Site by{" "}
+          <a href="https://garfishdigital.com" rel="noopener" target="_blank">
+            Garfish Digital
+          </a>
+        </p>
       </div>
     </footer>
   );

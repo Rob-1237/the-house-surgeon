@@ -17,8 +17,11 @@ export const metadata: Metadata = {
   description:
     "Licensed, bonded, and insured plumbers serving Indianapolis and the surrounding area: pipe repair, gas lines, water quality, and more.",
   openGraph: { siteName: site.name, type: "website", locale: "en_US" },
+  appleWebApp: { statusBarStyle: "black" },
 };
 
+// Browser + status bars dark on phones: theme-color (Chrome/Android, older Safari), a dark root
+// background (Safari 26 samples it for its bars and overscroll), and the home-screen status bar.
 export const viewport: Viewport = { themeColor: "#01150f" }; // header background (--color-primary)
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

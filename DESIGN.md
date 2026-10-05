@@ -39,6 +39,10 @@ colors**; derive tints with `color-mix()` from these.
 - Derived: `--tint-primary` (12% primary-light on white: icon tiles, placeholders, pipe fill),
   `--on-dark-muted` (82% white).
 - About: "Our team" on canvas, "Credentials" on white (`tone="alt"`).
+- Footer fine print (copyright, "Site by Garfish Digital"): `--color-fine-print` rgb(122 90 0), Rob's
+  call; 2.9:1 on primary, below AA for small text. The Garfish link turns `--color-secondary-hover` on hover.
+- Phones: browser/status bars dark via `theme-color` #01150f, a primary `html` background (Safari 26
+  samples it; body keeps the ivory canvas) and `apple-mobile-web-app-status-bar-style: black`.
 - Exceptions: `--color-error` #B42318 (form error text only); `--color-star` #E8B33A (review stars
   only, 9.8:1 on primary). Rough-in `.tbd` markers use a dark gold
   that disappears with them before launch.
@@ -57,7 +61,7 @@ colors**; derive tints with `color-mix()` from these.
     large `PipBadge` circle. His legs run past the circle and are clipped by it, so no cut-off edge shows.
     The circle has a faint line-art pipework pattern behind Pip (original SVG, not stock).
   - Services: `walking` (toolbox) in the closing CTA band, lifted ~25% of the band height (6rem) off
-    its bottom edge on desktop, head breaking well into the section above. Phones: bottom-anchored.
+    its bottom edge on desktop, head breaking well into the section above. Phones: lifted 10vh.
   - Contact: `drips` (15rem), mirrored in CSS to face left toward the copy, floating 4rem above the
     booking embed (feet clear of it) with his head rising into the Video House Call section above. 404: `wink`. About: none.
   - Art is the v2 draft; replace the files in `public/images/pip/` after the Figma redraw.
@@ -71,7 +75,8 @@ colors**; derive tints with `color-mix()` from these.
   (≤ 36em) it shrinks to 72vw and the h1 drops to `--text-5xl`, so the Call button is on the first screen.
 - **Photo heroes (`Hero` with `photo`; Services, About, Contact):** same layout as the home hero (eyebrow, h1, lead, actions
   on the left; wave bottom; `TrustStrip` overlapping the wave), with a full-bleed photo behind it (each file named for its page: `services-hero.webp` (leaking trap), `about-hero.webp`
-  (Indianapolis skyline), `contact-hero.webp` (hands and wrench)): grayscale, primary gradient overlay (heaviest left and bottom), anchored top-right so
+  (Indianapolis skyline), `contact-hero.webp` (hands and wrench; `mobileScale: 0.7` shrinks it 30% on
+  phones, anchored top and faded out at its bottom edge)): grayscale, primary gradient overlay (heaviest left and bottom), anchored top-right so
   only the left and bottom crop.
 - **Service area map (`AreaMap`):** Google Maps embed (no key, no pin) centred on downtown
   Indianapolis, ~25 mi each way: Danville and Greenfield in view, Greencastle and Knightstown out.

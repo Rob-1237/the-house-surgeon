@@ -56,8 +56,9 @@
   padding-block-start: var(--space-5);
   border-block-start: 1px solid color-mix(in srgb, var(--color-surface) 15%, transparent);
   font-size: var(--text-sm);
-  color: color-mix(in srgb, var(--color-surface) 75%, transparent);
+  color: var(--color-fine-print);
 }
+.base a { color: inherit; } /* hover: --color-secondary-hover, from the .footer a rule above */
 
 @media (max-width: 48em) {
   .grid { grid-template-columns: 1fr; gap: var(--space-6); }

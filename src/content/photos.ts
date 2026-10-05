@@ -3,7 +3,8 @@
  * ⚠ Confirm usage rights for each before launch.
  * `position` = object-position for the wide hero crop.
  */
-export type Photo = { src: string; alt: string; width: number; height: number; position?: string };
+/** `mobileScale` (photo heroes): shrink the photo on phones (0.7 = 30% smaller); it fades out at its bottom edge. */
+export type Photo = { src: string; alt: string; width: number; height: number; position?: string; mobileScale?: number };
 
 export const photos = {
   /** Page heroes (`Hero` with `photo`): each file is named for the page it heads. */
@@ -27,6 +28,7 @@ export const photos = {
     width: 1600,
     height: 1063,
     position: "70% 50%", // keep the hands and wrench in view as the left side crops
+    mobileScale: 0.7, // close-up reads too large on a tall phone hero
   },
   videoCall: {
     src: "/images/photos/video-call.webp",

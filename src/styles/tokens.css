@@ -80,6 +80,7 @@
   --gradient-hero: linear-gradient(135deg, #01150f 0%, #032a1d 100%);  /* white text ≥ 8.5:1 */
 
   /* Functional exception: review star rating only (9.8:1 on --color-primary) */
+  --color-fine-print: rgb(122 90 0); /* footer copyright + credit (Rob 2026-10-05; 2.9:1 on primary) */
   --color-star: #E8B33A;
 
   /* Functional exception: form error text only */
