@@ -7,8 +7,8 @@ import styles from "./CtaBand.module.css";
 /** Closing CTA before the footer. Restates the page goal: call, or book. */
 export function CtaBand({
   title = "Got a plumbing problem? Let's take a look.",
-  lead = "Call us, or book a visit online.",
-  secondary = { href: "/contact/#book", label: "Book a visit" },
+  lead = "Call us, or schedule a job online.",
+  secondary = { href: "/contact/#schedule", label: "Schedule a job" },
   media,
 }: {
   title?: string;

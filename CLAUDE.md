@@ -4,7 +4,7 @@
 
 Planning lives outside this repo in `../NOTES/PLUMBING_PLAN.md` (§0.1–0.3 = decisions; latest wins).
 Visual references: `../thd-concepts/`. Pages: Home, Services (+ service area, `/services/[slug]` detail
-pages for SEO), About, Contact (+ booking, Video House Call, form, emergency tips).
+pages for SEO), About, Contact (two routes only: call, or schedule a job in Jobber; plus emergency tips).
 
 ## Design
 Read `DESIGN.md` before any UI work: palette (core tokens only, no new colors), type, heroes,
@@ -15,8 +15,8 @@ Pip placement rules, and the pipe motif.
   features: no route handlers, server actions, rewrites/redirects in next.config, or image optimizer.
 - TypeScript, **plain CSS**: `src/styles/tokens.css` (design tokens) + CSS Modules per component +
   a small global layer in `src/app/globals.css`. Components use only token variables.
-- Netlify Forms: blueprint in `public/__forms.html`; `ContactForm` posts multipart to it. Keep field names in sync.
-- Scheduling: Cal.com inline embed (`CalEmbed`), links in `src/content/site.ts → cal`.
+- Scheduling, requests, invoices: **Jobber** only (`JobberEmbed` on /contact/#schedule; Video House Call is
+  an appointment type inside it). No Cal.com, no Netlify Forms. Keep platforms to Netlify + Jobber + Google.
 - Motion: page transitions via React `<ViewTransition>` (`PageTransition`, wrap every page),
   hero entry is CSS-only (`.enter`), scroll reveals via `Reveal` (IntersectionObserver).
   ≤ 24px travel, ease-out, respect `prefers-reduced-motion`.

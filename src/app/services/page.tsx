@@ -68,8 +68,8 @@ export default function ServicesPage() {
       </Section>
 
       <CtaBand
-        title="Not sure which service you need?"
-        lead="Call and describe it. We'll help determine."
+        title="We can determine the problem"
+        lead="Call and describe it. We'll help."
         media={<Pip pose="walking" sizes="(max-width: 60em) 9rem, 17rem" />}
       />
     </PageTransition>

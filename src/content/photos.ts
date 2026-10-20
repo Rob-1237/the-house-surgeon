@@ -122,16 +122,8 @@ export const serviceCardPhotos: Record<string, Photo> = {
   },
 };
 
-/** Contact page photos (supplied by Rob, 2026-10-05). ⚠ Confirm rights; the video photo (480px)
- * and the Services hero (645px, `photos.servicesHero`) are low-resolution; replace with larger files. */
+/** Contact page photos (supplied by Rob, 2026-10-05). ⚠ Confirm rights; the Services hero (645px, `photos.servicesHero`) is low-resolution; replace with a larger file. */
 export const contactPhotos = {
-  videoHouseCall: {
-    src: "/images/photos/video-house-call.webp",
-    alt: "Woman on a video call, holding up her phone in her living room",
-    width: 480,
-    height: 270,
-    position: "40% 50%",
-  },
   call: {
     src: "/images/contact/call.webp",
     alt: "Woman on the phone beside a leaking pipe under her sink",
@@ -145,19 +137,5 @@ export const contactPhotos = {
     width: 600,
     height: 400,
     position: "40% 60%",
-  },
-  video: {
-    src: "/images/contact/video.webp",
-    alt: "Man looking at his phone during a video call",
-    width: 500,
-    height: 281,
-    position: "50% 40%",
-  },
-  message: {
-    src: "/images/contact/message.webp",
-    alt: "Hands typing a message on a phone",
-    width: 500,
-    height: 281,
-    position: "60% 50%",
   },
 } satisfies Record<string, Photo>;

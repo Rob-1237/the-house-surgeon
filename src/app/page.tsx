@@ -28,7 +28,7 @@ export default function Home() {
             <a href={site.phone.href} className="btn btn--primary">
               Call {site.phone.display}
             </a>
-            <Link href="/contact/#video" className="btn btn--secondary">
+            <Link href="/contact/#schedule" className="btn btn--secondary">
               Book a Video House Call
             </Link>
           </>
@@ -55,7 +55,7 @@ export default function Home() {
             <p className="muted">
               Book a short video call and point your camera at the problem. If it&apos;s a quick fix, one of our plumbers will walk you through it. If not, we show up.
             </p>
-            <Link href="/contact/#video" className="btn btn--primary">
+            <Link href="/contact/#schedule" className="btn btn--primary">
               Book a Video House Call
             </Link>
           </Reveal>

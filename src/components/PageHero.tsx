@@ -24,7 +24,7 @@ export function PageHero({
   title: ReactNode;
   lead?: ReactNode;
   actions?: ReactNode;
-  /** Wide band image. Omit both photo and photoLabel for a text-only hero (404, thanks). */
+  /** Wide band image. Omit both photo and photoLabel for a text-only hero (404). */
   photo?: Photo;
   /** Placeholder label when the page should have a photo but doesn't yet. */
   photoLabel?: string;

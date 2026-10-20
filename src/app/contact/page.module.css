@@ -1,35 +1,6 @@
-.split {
-  display: grid;
-  grid-template-columns: 7fr 5fr;
-  gap: var(--space-10);
-  align-items: center;
-}
-.splitCopy { display: grid; gap: var(--space-4); justify-items: start; }
-.splitMedia { display: grid; place-items: center; }
-.photo { inline-size: 100%; block-size: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-lg); }
-.steps { margin-block: var(--space-10); }
-
-.layout { display: grid; grid-template-columns: 8fr 4fr; gap: var(--space-10); align-items: start; }
-.layout > * { min-inline-size: 0; } /* grid items default to min-content width; keep the form inside the column */
-/* Same dark tile as the home service cards (ServiceGrid) */
-.aside {
-  display: grid;
-  justify-items: start;
-  gap: var(--space-3);
-  padding: var(--space-6);
-  background: var(--color-primary);
-  border-radius: var(--radius-lg);
-}
-.aside h3 { font-size: var(--text-xl); margin-block-start: var(--space-2); color: var(--color-surface); }
-.aside a { font-weight: 600; color: var(--color-surface); }
-
-@media (max-width: 48em) {
-  .split, .layout { grid-template-columns: 1fr; gap: var(--space-6); }
-}
-
 /*
  * Booking header: copy left, Pip catching drips right, standing on the embed's top edge. The
- * negative top margin shrinks his share of the row so his head rises into the Video House Call
+ * negative top margin shrinks his share of the row so his head rises into the contact options
  * section above (like Pip in the Services CTA band).
  */
 .bookHead {

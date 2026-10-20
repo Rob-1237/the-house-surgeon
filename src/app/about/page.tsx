@@ -31,8 +31,8 @@ export default function AboutPage() {
             <a href={site.phone.href} className="btn btn--primary">
               Call {site.phone.display}
             </a>
-            <Link href="/contact/#book" className="btn btn--secondary">
-              Book a visit
+            <Link href="/contact/#schedule" className="btn btn--secondary">
+              Schedule a job
             </Link>
           </>
         }

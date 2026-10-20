@@ -2,10 +2,9 @@
   list-style: none;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-4);
 }
 .item { display: grid; }
 .body { font-size: var(--text-sm); }
-@media (max-width: 60em) { .grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 30em) { .grid { grid-template-columns: 1fr; } }

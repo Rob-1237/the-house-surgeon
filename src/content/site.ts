@@ -8,14 +8,14 @@ export const TBD = "TBD";
 export const site = {
   name: "The House Surgeon",
   tagline: "Licensed plumbing for Indianapolis and the surrounding area.",
-  url: "https://housesurgeonindy.com", // ⚠ confirm spelling before launch (vs. thehousesurgeonindy.com)
+  url: "https://thehousesurgeonindy.com", // confirmed 2026-10-20
   devUrl: "https://thehousesurgeon.netlify.app",
 
   phone: {
     display: "(463) 312-4018",
     href: "tel:+14633124018",
   },
-  email: "housesurgeon@gmail.com",
+  email: "housesurgeonindy@gmail.com",
 
   license: TBD, // Indiana plumbing contractor license #
   bonding: TBD, // bonding / insurance carrier
@@ -32,14 +32,6 @@ export const site = {
       "https://www.google.com/searchviewer/10?svid=CAwSHRIbCgNwdnESFENnMHZaeTh4TVhwbU0zUXhhamN3GAo",
     googleReview: "", // short review link from GBP — TBD
     payInvoice: "", // Jobber Client Hub link — TBD
-  },
-
-  /**
-   * Cal.com. One embed of the profile lists both event types (Service visit, Video House Call).
-   * `profile` = Cal username; empty = placeholder renders instead.
-   */
-  cal: {
-    profile: "",
   },
 
   /** Possible $100-off first visit. Off until Floyd confirms. */
