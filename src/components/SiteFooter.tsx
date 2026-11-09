@@ -31,7 +31,7 @@ export function SiteFooter() {
               <a href={`mailto:${site.email}`}>{site.email}</a>
             </li>
             <li className="muted">
-              Hours: <Tbd>{site.hours}</Tbd>
+              Hours: {site.hours}
             </li>
             <li>
               {site.links.payInvoice ? (

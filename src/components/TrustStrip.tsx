@@ -22,7 +22,9 @@ export function TrustStrip() {
         <li>
           <strong>Google reviews</strong>
           <span>
-            <Tbd>★ rating · count</Tbd>
+            <a href={site.links.googleProfile} rel="noopener" target="_blank">
+              {site.googleRating.rating} ★ · {site.googleRating.count} reviews
+            </a>
           </span>
         </li>
         <li>

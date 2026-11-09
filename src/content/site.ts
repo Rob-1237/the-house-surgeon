@@ -19,7 +19,16 @@ export const site = {
 
   license: TBD, // Indiana plumbing contractor license #
   bonding: TBD, // bonding / insurance carrier
-  hours: TBD, // regular hours + emergency availability — promise only what Floyd keeps
+  /** Matches GBP main hours (confirmed by Floyd 2026-11-09). Emergencies answered 24/7. */
+  hours: "Every day, 6 AM–midnight · Emergencies 24/7",
+  openingHours: { opens: "06:00", closes: "23:59" }, // every day; feeds JSON-LD
+
+  /** Google rating as shown on the Business Profile. Update by hand when the count moves. */
+  googleRating: {
+    rating: "5.0",
+    count: 30,
+    asOf: "2026-11-09",
+  },
 
   serviceArea: {
     center: "Decatur Township, Indianapolis",
@@ -28,9 +37,10 @@ export const site = {
   },
 
   links: {
-    googleProfile:
-      "https://www.google.com/searchviewer/10?svid=CAwSHRIbCgNwdnESFENnMHZaeTh4TVhwbU0zUXhhamN3GAo",
-    googleReview: "", // short review link from GBP — TBD
+    googleProfile: "https://maps.app.goo.gl/e1HbBn3UPXrbezB49", // permanent GBP share link (2026-11-09)
+    googleReview: "https://g.page/r/CRfYsCLEqUTmEBM/review", // GBP "Ask for reviews" link
+    instagram: "https://www.instagram.com/thehousesurgeonindy/", // as listed on GBP
+    facebook: "https://www.facebook.com/profile.php?id=61593558752254", // as listed on GBP
     payInvoice: "", // Jobber Client Hub link — TBD
   },
 

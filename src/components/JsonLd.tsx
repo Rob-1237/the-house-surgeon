@@ -16,7 +16,14 @@ export function JsonLd() {
       geoMidpoint: { "@type": "GeoCoordinates", latitude: 39.69, longitude: -86.29 }, // Decatur Twp, approx.
       geoRadius: Math.round(site.serviceArea.radiusMiles * 1609.34),
     },
-    sameAs: [site.links.googleProfile],
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: site.openingHours.opens,
+      closes: site.openingHours.closes,
+    },
+    hasMap: site.links.googleProfile,
+    sameAs: [site.links.googleProfile, site.links.instagram, site.links.facebook],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Plumbing services",
